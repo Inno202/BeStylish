@@ -110,7 +110,7 @@ export default function HomePage() {
                 MEETS MODERNITY
               </h2>
               <p className="text-white/60 text-lg font-light leading-relaxed mb-10">
-                Inspired by the bold patterns of MaXhosa and the urban energy of Galxboy, 
+                Inspired by BeSpoke Suits and the kasi energy of Welkom, 
                 BeStylish is a tribute to African craftsmanship. We believe every stitch 
                 should tell a story of excellence and identity.
               </p>
