@@ -59,7 +59,7 @@ export default function Navbar() {
           {/* Left - Logo & Desktop Links */}
           <div className="flex items-center space-x-12">
             <Link to="/" className="flex items-center">
-              <img src={logo} alt="BeStylish Logo" className="h-12 w-auto" />
+              <img src="src/images/BeStylishLogo.jpeg" alt="BeStylish Logo" className="h-12 w-auto" />
             </Link>
             
             <div className="hidden sm:flex items-center space-x-8">

@@ -27,7 +27,7 @@ export default function ContactSection() {
               <MapPin size={20} />
             </div>
             <h3 className="text-sm font-bold uppercase tracking-widest mb-2">Location</h3>
-            <p className="text-gray-500 text-sm font-light">Johannesburg, South Africa</p>
+            <p className="text-gray-500 text-sm font-light">Welkom, South Africa</p>
           </motion.div>
 
           <motion.div
@@ -41,7 +41,7 @@ export default function ContactSection() {
               <Phone size={20} />
             </div>
             <h3 className="text-sm font-bold uppercase tracking-widest mb-2">Phone</h3>
-            <p className="text-gray-500 text-sm font-light">+27 11 555 0198</p>
+            <p className="text-gray-500 text-sm font-light">+27 79 109 7281</p>
           </motion.div>
 
           <motion.div
@@ -69,7 +69,7 @@ export default function ContactSection() {
               <MessageCircle size={20} />
             </div>
             <h3 className="text-sm font-bold uppercase tracking-widest mb-2">WhatsApp</h3>
-            <a href="https://wa.me/27115550198" target="_blank" rel="noopener noreferrer" className="text-gray-500 text-sm font-light hover:text-black transition-colors">
+            <a href="https://wa.me/27791097281" target="_blank" rel="noopener noreferrer" className="text-gray-500 text-sm font-light hover:text-black transition-colors">
               Message Us
             </a>
           </motion.div>
