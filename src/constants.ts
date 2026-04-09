@@ -1,6 +1,6 @@
-import { Product } from './types';
+import { PortfolioItem } from './types';
 
-export const PRODUCTS: Product[] = [
+export const PRODUCTS: PortfolioItem[] = [
   {
     id: '1',
     name: 'Heritage Knit Suit',

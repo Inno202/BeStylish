@@ -22,7 +22,7 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="text-white/80 text-xs uppercase tracking-[0.5em] mb-6 block font-medium"
         >
-          The Art of Tailoring
+          BeStylish.
         </motion.span>
         
         <motion.h1
@@ -51,12 +51,12 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.8 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-6"
         >
-          <button className="px-10 py-4 bg-white text-black text-xs uppercase tracking-[0.2em] font-bold hover:bg-gray-200 transition-all w-full sm:w-auto">
-            Shop Collection
-          </button>
-          <button className="px-10 py-4 border border-white text-white text-xs uppercase tracking-[0.2em] font-bold hover:bg-white hover:text-black transition-all w-full sm:w-auto">
+          <a href="#collections" className="px-10 py-4 bg-white text-black text-xs uppercase tracking-[0.2em] font-bold hover:bg-gray-200 transition-all w-full sm:w-auto text-center">
+            View Collections
+          </a>
+          <a href="#appointment" className="px-10 py-4 border border-white text-white text-xs uppercase tracking-[0.2em] font-bold hover:bg-white hover:text-black transition-all w-full sm:w-auto text-center">
             Book Appointment
-          </button>
+          </a>
         </motion.div>
       </div>
 

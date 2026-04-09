@@ -1,19 +1,48 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, ShoppingBag, Search, User } from 'lucide-react';
+import { Menu, X, User } from 'lucide-react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const role = localStorage.getItem('userRole');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleUserClick = () => {
+    if (role === 'admin') {
+      navigate('/admin');
+    } else {
+      navigate('/login');
+    }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('userRole');
+    navigate('/');
+  };
+
+  const isHomePage = location.pathname === '/';
 
   const navLinks = [
-    { name: 'Collections', href: '#' },
-    { name: 'Bespoke', href: '#' },
-    { name: 'Appointments', href: '#' },
-    { name: 'About', href: '#' },
+    { name: 'Home', href: isHomePage ? '#' : '/' },
+    { name: 'Collections', href: isHomePage ? '#collections' : '/#collections' },
+    { name: 'About', href: isHomePage ? '#about' : '/#about' },
+    { name: 'Book Appointment', href: isHomePage ? '#appointment' : '/#appointment' },
+    { name: 'Contact', href: isHomePage ? '#contact' : '/#contact' },
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm' : 'bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Mobile Menu Button (Mobile Only) */}
@@ -28,9 +57,9 @@ export default function Navbar() {
 
           {/* Left - Logo & Desktop Links */}
           <div className="flex items-center space-x-12">
-            <a href="/" className="text-xl font-light tracking-[0.4em] uppercase text-black">
-              BeStylish
-            </a>
+            <Link to="/" className="flex items-center">
+              <img src="/logo.png" alt="BeStylish Logo" className="h-12 w-auto" />
+            </Link>
             
             <div className="hidden sm:flex items-center space-x-8">
               {navLinks.map((link) => (
@@ -47,18 +76,17 @@ export default function Navbar() {
 
           {/* Right - Icons */}
           <div className="flex items-center space-x-6">
-            <button className="text-gray-500 hover:text-black transition-colors">
-              <Search size={20} strokeWidth={1.5} />
-            </button>
-            <button className="text-gray-500 hover:text-black transition-colors">
+            <button onClick={handleUserClick} className="text-gray-500 hover:text-black transition-colors flex items-center gap-2">
               <User size={20} strokeWidth={1.5} />
-            </button>
-            <button className="text-gray-500 hover:text-black transition-colors relative">
-              <ShoppingBag size={20} strokeWidth={1.5} />
-              <span className="absolute -top-1 -right-1 bg-black text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
-                0
+              <span className="hidden sm:inline text-[10px] uppercase tracking-[0.2em] font-medium">
+                {role === 'admin' ? 'Dashboard' : 'Login'}
               </span>
             </button>
+            {role && (
+              <button onClick={handleLogout} className="text-[10px] uppercase tracking-[0.2em] font-medium text-gray-500 hover:text-black transition-colors">
+                Logout
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -83,6 +111,17 @@ export default function Navbar() {
                   {link.name}
                 </a>
               ))}
+              <div className="pt-4 border-t border-gray-100 flex justify-between items-center">
+                <button onClick={() => { handleUserClick(); setIsOpen(false); }} className="flex items-center gap-2 text-sm uppercase tracking-widest font-medium text-gray-900">
+                  <User size={18} strokeWidth={1.5} />
+                  {role === 'admin' ? 'Dashboard' : 'Login'}
+                </button>
+                {role && (
+                  <button onClick={() => { handleLogout(); setIsOpen(false); }} className="text-sm uppercase tracking-widest font-medium text-gray-900">
+                    Logout
+                  </button>
+                )}
+              </div>
             </div>
           </motion.div>
         )}

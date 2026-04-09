@@ -1,14 +1,15 @@
-export interface Product {
+export type UserRole = 'Customer' | 'Admin';
+
+export interface PortfolioItem {
   id: string;
   name: string;
-  price: number;
-  category: 'Suits' | 'Dresses' | 'Streetwear' | 'Traditional';
+  label: string; // e.g., "Bespoke Suit", "Traditional Wear"
+  category: string;
   image: string;
   description: string;
-  customizable: boolean;
 }
 
-export interface Appointment {
+export interface AppointmentRequest {
   id: string;
   name: string;
   email: string;
@@ -16,4 +17,6 @@ export interface Appointment {
   time: string;
   service: string;
   notes?: string;
+  status: 'Pending' | 'Confirmed' | 'Completed';
 }
+

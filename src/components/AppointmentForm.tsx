@@ -22,6 +22,7 @@ export default function AppointmentForm() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log('Appointment Request Data:', formData);
     alert('Appointment request sent! We will contact you shortly.');
   };
 
@@ -33,7 +34,7 @@ export default function AppointmentForm() {
             Book a Fitting
           </span>
           <h2 className="text-4xl font-bold tracking-tight text-gray-900 mb-6">
-            SCHEDULE AN APPOINTMENT
+            REQUEST AN APPOINTMENT
           </h2>
           <p className="text-gray-500 max-w-xl mx-auto font-light leading-relaxed">
             Visit our studio for a professional fitting and fabric consultation. 
