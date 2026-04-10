@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, User } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import logo from '../images/BeStylishLogo.jpeg';
+import logo2 from '../images/Be Stylish.png';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
